@@ -42,7 +42,7 @@ export default {
   },
   data: function() {
     return {
-      currentComponent: "ADMINA001"
+      currentComponent: "ADMINMAIN"
     };
   },
   methods: {
