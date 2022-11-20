@@ -1,4 +1,4 @@
-## Project setup
+## 1. Project setup
 ```
 npm install
 ```
@@ -17,3 +17,9 @@ npm run electron:serve
 ```
 npm run build
 ```
+
+## 2. used Library
+- ag-grid-vue3 (community)
+- vue-router
+- vue-cookies
+- admin-lte@3.1.0
