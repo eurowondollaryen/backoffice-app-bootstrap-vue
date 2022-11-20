@@ -44,6 +44,7 @@
       <div class="row">
         <div class="col-md-12 card p-3">
           <h5><strong>조회 결과</strong></h5>
+          <loading-circle v-if="isLoadingCircleVisible" :isLoading="isLoading"/>
           <div class="row">
             <ag-grid-vue
                     style="width: 100%; height: 200px"
@@ -70,11 +71,13 @@
 <script>
 
 import { AgGridVue } from "ag-grid-vue3";
+import LoadingCircle from "../common/LoadingCircle.vue";
 
 export default {
     name: "ADMINA001",
     components: {
-      AgGridVue
+      AgGridVue,
+      LoadingCircle
     },
     data: function() {
         return {
