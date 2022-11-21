@@ -38,5 +38,12 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback");
+@font-face {
+	font-family: "NanumGothic";
+	src: url("./assets/fonts/NanumGothic/NanumGothic-Regular.woff2") format('woff2');
+}
+body {
+	font-family: "NanumGothic", sans-serif;
+	background-color: #F5F5F5;
+}
 </style>
