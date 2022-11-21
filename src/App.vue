@@ -37,7 +37,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @font-face {
 	font-family: "NanumGothic";
 	src: url("./assets/fonts/NanumGothic/NanumGothic-Regular.woff2") format('woff2');
