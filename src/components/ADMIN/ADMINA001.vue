@@ -15,7 +15,7 @@
     <!-- /.card-header -->
     <div class="card-body">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-3">
           <div class="form-group">
             <label>부서명</label>
             <input class="form-control"
@@ -27,7 +27,7 @@
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
-        <div class="col-md-6">
+        <div class="col-md-3">
           <div class="form-group">
             <label>이름/사번</label>
             <input class="form-control"
@@ -35,6 +35,14 @@
                    placeholder="이름/사번을 입력하세요."
                    v-model="inpEmplName"
                    @keyup="onEnterAutoSearch" />
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>재직여부</label>
+            <select-box :valueList="isWorkingList" v-model="inpIsWorking"></select-box>
           </div>
           <!-- /.form-group -->
         </div>
@@ -72,12 +80,14 @@
 
 import { AgGridVue } from "ag-grid-vue3";
 import LoadingCircle from "../common/LoadingCircle.vue";
+import SelectBox from "../common/SelectBox.vue";
 
 export default {
     name: "ADMINA001",
     components: {
       AgGridVue,
-      LoadingCircle
+      LoadingCircle,
+      SelectBox
     },
     data: function() {
         return {
@@ -85,6 +95,9 @@ export default {
           /* 조회 조건 변수들 */
           inpDeptName: "",
           inpEmplName: "",
+          inpIsWorking: "0",
+          /* selectbox 선택값 */
+          isWorkingList: [{value: "0", text: "전체"}, {value: "1", text: "재직"}, {value: "2", text: "퇴직"}],
           /* ag-grid-vue3 관련 변수들 */
           rowData: [],
           rowDataDeleted: [],
