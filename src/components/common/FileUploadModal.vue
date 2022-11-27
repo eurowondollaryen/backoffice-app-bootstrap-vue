@@ -153,6 +153,8 @@ export default {
 
 #common-modal {
   position: absolute;
+  top: 25%;
+  left: 25%;
 }
 
 #file-drop-area {
