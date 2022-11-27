@@ -50,6 +50,10 @@
       </div>
       <!-- /.row -->
       <div class="row">
+        <button class="btn btn-primary" @click="modalStateChange(true)">파일 업로드 모달 테스트</button>
+      </div>
+      <!-- /.row -->
+      <div class="row">
         <div class="col-md-12 card p-3">
           <h5><strong>조회 결과</strong></h5>
           <loading-circle v-if="isLoadingCircleVisible" :isLoading="isLoading"/>
@@ -66,6 +70,12 @@
             </ag-grid-vue>
           </div>
         </div>
+        <FileUploadModal 
+          :visible="fileUploadModalVislble"
+          :title="fileUploadModalTitle"
+          :fileIdxx="fileUploadModalFileIdxx"
+          :fileNumberLimit="fileUploadModalFileNumberLimit"
+          @modalStateChange="modalStateChange"/>
       </div>
       <!-- /.row -->
     </div>
@@ -81,13 +91,15 @@
 import { AgGridVue } from "ag-grid-vue3";
 import LoadingCircle from "../common/LoadingCircle.vue";
 import SelectBox from "../common/SelectBox.vue";
+import FileUploadModal from "../common/FileUploadModal.vue";
 
 export default {
     name: "ADMINA001",
     components: {
       AgGridVue,
       LoadingCircle,
-      SelectBox
+      SelectBox,
+      FileUploadModal
     },
     data: function() {
         return {
@@ -96,6 +108,11 @@ export default {
           inpDeptName: "",
           inpEmplName: "",
           inpIsWorking: "0",
+          /* file upload modal 관련 변수 */
+          fileUploadModalVislble: false,
+          fileUploadModalTitle: "파일 업로드 테스트",
+          fileUploadModalFileIdxx: "",
+          fileUploadModalFileNumberLimit: 5,
           /* selectbox 선택값 */
           isWorkingList: [{value: "0", text: "전체"}, {value: "1", text: "재직"}, {value: "2", text: "퇴직"}],
           /* ag-grid-vue3 관련 변수들 */
@@ -143,6 +160,9 @@ export default {
         if(e.keyCode === 13) {
           this.search01();
         }
+      },
+      modalStateChange: function(state) {
+        this.fileUploadModalVislble = state;
       }
     }
 };
