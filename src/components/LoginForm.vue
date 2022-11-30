@@ -72,12 +72,7 @@ export default {
           //console.log(response.data);
           //로그인 성공
           if(response.data[0]["token"]) {
-            const cookieLifeTime = 60 * 60 * 1;//기본 Cookie 수명 1시간
-            VueCookies.set("userId", response.data[0]["USER_IDXX"], cookieLifeTime);//사용자 ID, 수명은 1시간
-            VueCookies.set("userDiv", response.data[0]["USER_DIVX"], cookieLifeTime);//사용자 구분, 수명은 1시간
-            VueCookies.set("userName", response.data[0]["USER_NAME"], cookieLifeTime);//사용자명, 수명은 1시간
-            VueCookies.set("emplNumb", response.data[0]["EMPL_NUMB"], cookieLifeTime);//사용자 사번, 수명은 1시간
-            VueCookies.set("companyCode", response.data[0]["COMPANY_NO"], cookieLifeTime);//회사코드, 수명은 1시간
+            const cookieLifeTime = 60 * 60 * 1 * 24;//기본 Cookie 수명 24시간
             VueCookies.set("companyName", response.data[0]["COMPANY_NM"], cookieLifeTime);//회사명, 수명은 1시간
             VueCookies.set("token", response.data[0]["token"], cookieLifeTime);//인증 토큰, 수명은 1시간
             window.location = "/";//Main화면으로 redirect
