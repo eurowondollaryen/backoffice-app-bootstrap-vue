@@ -1,10 +1,14 @@
 <template>
-  <div class="d-flex justify-content-center align-items-center" id="main">
-      <h1 class="mr-3 pr-3 align-top border-right inline-block align-content-center">404</h1>
-      <div class="inline-block align-middle">
-        <h2 class="font-weight-normal lead" id="desc">페이지를 찾을 수 없습니다.</h2>
-      </div>
-  </div>
+          <div class="d-flex align-items-center justify-content-center vh-100">
+            <div class="text-center">
+                <h1 class="display-1 fw-bold">404</h1>
+                <p class="fs-3"> <span class="text-danger">Opps!</span> Page not found.</p>
+                <p class="lead">
+                    The page you’re looking for doesn’t exist.
+                  </p>
+                <a href="index.html" class="btn btn-primary">Go Home</a>
+            </div>
+        </div>
 </template>
 
 <script>
