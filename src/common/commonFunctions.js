@@ -36,6 +36,14 @@ const commonFunctions = {
                 ].join('');
     },
     /*
+     * extractValues
+     * mapping object의 key값을 배열을 return한다.
+     * reference: https://www.ag-grid.com/vue-data-grid/reference-data/
+     */
+    extractValues: function(mappings) {
+        return Object.keys(mappings);
+    },
+    /*
      * lookupValue
      * get value with key (code) ex) 0001: "부서" => return "부서"
      */

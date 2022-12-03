@@ -92,7 +92,9 @@ import { AgGridVue } from "ag-grid-vue3";
 import LoadingCircle from "../common/LoadingCircle.vue";
 import SelectBox from "../common/SelectBox.vue";
 import FileUploadModal from "../common/FileUploadModal.vue";
+import commonFunctions from '../../common/commonFunctions.js';
 
+const stateMappings = {"1": "입고대기", "2": "입고완료"};
 export default {
     name: "ADMINA001",
     components: {
@@ -130,9 +132,22 @@ export default {
               editable: true
             },
             {
-              headerName: '',
-              field: 'VENDOR_DIV_CODE',
-              editable: true
+              headerName: '드롭다운 테스트',
+              field: 'DIV',
+              editable: true,
+              width: 120,
+              cellEditor: 'agSelectCellEditor',
+              cellEditorParams: {
+                  values: commonFunctions.extractValues(stateMappings)
+              },
+              // convert code to value
+              valueFormatter: params => {
+                  return commonFunctions.lookupValue(stateMappings, params.value);
+              },
+              // convert value to code
+              valueParser: params => {
+                  return commonFunctions.lookupKey(stateMappings, params.newValue);
+              }
             }
           ],
           gridApi: null,
