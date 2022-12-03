@@ -116,12 +116,12 @@ export default {
           /* selectbox 선택값 */
           isWorkingList: [{value: "0", text: "전체"}, {value: "1", text: "재직"}, {value: "2", text: "퇴직"}],
           /* ag-grid-vue3 관련 변수들 */
-          rowData: [],
+          rowData: [{}],
           rowDataDeleted: [],
           columnDefs:  [
             {
               headerName: '순번',
-              field: 'VENDOR_NO',
+              field: 'SEQ',
               editable: true
             },
             {
@@ -130,7 +130,7 @@ export default {
               editable: true
             },
             {
-              headerName: '성명',
+              headerName: '',
               field: 'VENDOR_DIV_CODE',
               editable: true
             }
