@@ -167,7 +167,9 @@ export default {
         console.log(this.inpEmplName);
       },
       addRow: function() {
-        this.rowData.push({SEQ: this.rowData.length});
+        this.rowData.push({SEQ: this.rowData.length+1});
+        this.gridApi.setRowData(this.rowData);
+        console.log(this.rowDataDeleted);
       },
       deleteRow: function() {
         const selectedRows = this.gridApi.getSelectedRows();
