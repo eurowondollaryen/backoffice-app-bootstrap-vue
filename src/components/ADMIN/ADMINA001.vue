@@ -51,6 +51,8 @@
       <!-- /.row -->
       <div class="row">
         <button class="btn btn-primary" @click="modalStateChange(true)">파일 업로드 모달 테스트</button>
+        <button class="btn btn-info" @click="addRow()">그리드 행 추가</button>
+        <button class="btn btn-danger" @click="deleteRow()">그리드 선택 행 삭제</button>
       </div>
       <!-- /.row -->
       <div class="row">
@@ -118,7 +120,7 @@ export default {
           /* selectbox 선택값 */
           isWorkingList: [{value: "0", text: "전체"}, {value: "1", text: "재직"}, {value: "2", text: "퇴직"}],
           /* ag-grid-vue3 관련 변수들 */
-          rowData: [{}],
+          rowData: [],
           rowDataDeleted: [],
           columnDefs:  [
             {
@@ -163,6 +165,20 @@ export default {
       search01: function() {
         console.log(this.inpDeptName);
         console.log(this.inpEmplName);
+      },
+      addRow: function() {
+        this.rowData.push({SEQ: this.rowData.length});
+      },
+      deleteRow: function() {
+        const selectedRows = this.gridApi.getSelectedRows();
+        const selectedSEQ = selectedRows.map(function(row) {
+          return row.SEQ;
+        });
+        const otherRows = this.rowData.filter(function(row) {
+          return selectedSEQ.indexOf(row.SEQ) < 0;
+        });
+        this.rowDataDeleted = selectedRows;
+        this.gridApi.setRowData(otherRows);
       },
       onGridReady(params) {
         this.gridApi = params.api;
