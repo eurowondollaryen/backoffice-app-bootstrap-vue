@@ -95,7 +95,9 @@ import LoadingCircle from "../common/LoadingCircle.vue";
 import SelectBox from "../common/SelectBox.vue";
 import FileUploadModal from "../common/FileUploadModal.vue";
 import commonFunctions from '../../common/commonFunctions.js';
+import btnCellRenderer from "../../common/renderers/btn-cell-renderer.js";
 
+/* eslint-disable vue/no-unused-components */
 const stateMappings = {"1": "입고대기", "2": "입고완료"};
 export default {
     name: "ADMINA001",
@@ -103,7 +105,8 @@ export default {
       AgGridVue,
       LoadingCircle,
       SelectBox,
-      FileUploadModal
+      FileUploadModal,
+      btnCellRenderer
     },
     data: function() {
         return {
@@ -150,7 +153,17 @@ export default {
               valueParser: params => {
                   return commonFunctions.lookupKey(stateMappings, params.newValue);
               }
-            }
+            },
+            {//TODO: Complete this!!
+              headerName: '버튼 테스트',
+              field: 'BUTTON_TEST',
+              cellEditor: "btnCellRenderer",
+              cellRendererParams: {
+                clicked: function(field) {
+                  console.log(`${field} was clicked`);
+                }
+              }
+            },
           ],
           gridApi: null,
           gridColumnApi: null,
