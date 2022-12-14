@@ -68,6 +68,7 @@
                     :rowSelection="rowSelection"
                     :rowData="rowData"
                     :onCellValueChanged="onCellValueChanged"
+                    :context="context"
                   >
             </ag-grid-vue>
           </div>
@@ -95,7 +96,7 @@ import LoadingCircle from "../common/LoadingCircle.vue";
 import SelectBox from "../common/SelectBox.vue";
 import FileUploadModal from "../common/FileUploadModal.vue";
 import commonFunctions from '../../common/commonFunctions.js';
-import btnCellRenderer from "../../common/renderers/btn-cell-renderer.js";
+import DeleteButtonRenderer from "../../common/renderers/DeleteButtonRenderer.js";
 
 /* eslint-disable vue/no-unused-components */
 const stateMappings = {"1": "입고대기", "2": "입고완료"};
@@ -106,7 +107,7 @@ export default {
       LoadingCircle,
       SelectBox,
       FileUploadModal,
-      btnCellRenderer
+      DeleteButtonRenderer
     },
     data: function() {
         return {
@@ -154,25 +155,27 @@ export default {
                   return commonFunctions.lookupKey(stateMappings, params.newValue);
               }
             },
-            {//TODO: Complete this!!
+            {
               headerName: '버튼 테스트',
-              field: 'BUTTON_TEST',
-              cellEditor: "btnCellRenderer",
-              cellRendererParams: {
-                clicked: function(field) {
-                  console.log(`${field} was clicked`);
-                }
-              }
-            },
+              field: 'DONE_CHK',
+              cellRenderer: DeleteButtonRenderer,
+              width: 100
+            }
           ],
           gridApi: null,
           gridColumnApi: null,
+          context: null, /* 자식 cell에서 부모에 접근하기 위해 선언 */
           rowSelection: "multiple",
           scrollX: false,
           scrollY: false,
           isLoadingCircleVisible: false,
           isLoading: false
         };
+    },
+    created: function() {
+    },
+    beforeMount() {
+      this.context = { componentParent: this };/* 자식 cellRenderer에 넘겨줄 부모의 context */
     },
     methods: {
       search01: function() {
@@ -183,6 +186,9 @@ export default {
         this.rowData.push({SEQ: this.rowData.length+1});
         this.gridApi.setRowData(this.rowData);
         console.log(this.rowDataDeleted);
+      },
+      delete01: function(SEQ) {
+        alert("[부모 Component]" + SEQ + "번 삭제합니다.");
       },
       deleteRow: function() {
         const selectedRows = this.gridApi.getSelectedRows();
