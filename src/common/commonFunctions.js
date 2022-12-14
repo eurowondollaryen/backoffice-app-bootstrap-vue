@@ -75,6 +75,19 @@ const commonFunctions = {
             targetObject[key] = sourceObject[key];
         });
         return targetObject;
+    },
+    /*
+     * numberWithCommas
+     * 숫자에 3자리마다 comma 붙이기
+     */
+    numberWithCommas: function(target) {
+        return target.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+    /**
+     * 숫자에 콤마 제거 
+     */
+    numberWithoutCommas: function(target) {
+        return target.toString().replace(/(,)/g, "");
     }
 };
 
