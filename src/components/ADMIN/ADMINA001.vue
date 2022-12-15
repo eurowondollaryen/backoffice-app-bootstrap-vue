@@ -97,6 +97,7 @@ import SelectBox from "../common/SelectBox.vue";
 import FileUploadModal from "../common/FileUploadModal.vue";
 import commonFunctions from '../../common/commonFunctions.js';
 import DeleteButtonRenderer from "../../common/renderers/DeleteButtonRenderer.js";
+import CalendarRenderer from "../../common/renderers/CalendarRenderer.js";
 
 /* eslint-disable vue/no-unused-components */
 const stateMappings = {"1": "입고대기", "2": "입고완료"};
@@ -107,7 +108,8 @@ export default {
       LoadingCircle,
       SelectBox,
       FileUploadModal,
-      DeleteButtonRenderer
+      DeleteButtonRenderer,
+      CalendarRenderer
     },
     data: function() {
         return {
@@ -160,6 +162,12 @@ export default {
               field: 'DONE_CHK',
               cellRenderer: DeleteButtonRenderer,
               width: 100
+            },
+            {
+              headerName: '캘린더 테스트',
+              field: 'DATE',
+              cellRenderer: CalendarRenderer,
+              width: 200
             }
           ],
           gridApi: null,
