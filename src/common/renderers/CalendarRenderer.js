@@ -6,12 +6,18 @@ export default class CalendarRenderer {
       this.eGui = document.createElement('div');
       this.eGui.innerHTML = `
             <span class="align-middle">
-                <input class="form-control" type="date" value="${params.data.DATE}"/>
+                <input class="form-control inp-calendar" type="date" value="${params.data.DATE}"/>
             </span>
          `;
   
       // get references to the elements we want
-      this.eButton = this.eGui.querySelector('.btn-simple');
+      //TODO: implement change value of calendar
+      this.eCalendar = this.eGui.querySelector('.inp-calendar');
+      this.eCalendar.onchange = (event) => {
+        console.log(event);
+        console.log(this.value);
+        console.log(params.data.DATE);
+      };
   
       // set value into cell
       this.cellValue = this.getValueToDisplay(params);

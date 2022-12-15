@@ -53,6 +53,7 @@
         <button class="btn btn-primary" @click="modalStateChange(true)">파일 업로드 모달 테스트</button>
         <button class="btn btn-info" @click="addRow()">그리드 행 추가</button>
         <button class="btn btn-danger" @click="deleteRow()">그리드 선택 행 삭제</button>
+        <button class="btn btn-danger" @click="printCurrentRow()">현재 행 데이터 log</button>
       </div>
       <!-- /.row -->
       <div class="row">
@@ -69,6 +70,7 @@
                     :rowData="rowData"
                     :onCellValueChanged="onCellValueChanged"
                     :context="context"
+                    @cell-clicked="onCellClicked"
                   >
             </ag-grid-vue>
           </div>
@@ -128,6 +130,7 @@ export default {
           /* ag-grid-vue3 관련 변수들 */
           rowData: [],
           rowDataDeleted: [],
+          currentRowData: {},
           columnDefs:  [
             {
               headerName: '순번',
@@ -223,6 +226,12 @@ export default {
       },
       modalStateChange: function(state) {
         this.fileUploadModalVislble = state;
+      },
+      onCellClicked: function(event) {
+        this.currentRowData = this.rowData[event.rowIndex];
+      },
+      printCurrentRow: function() {
+        console.log(this.currentRowData);
       }
     }
 };
