@@ -71,6 +71,7 @@
                     :onCellValueChanged="onCellValueChanged"
                     :context="context"
                     @cell-clicked="onCellClicked"
+                    :stopEditingWhenCellsLoseFocus="true"
                   >
             </ag-grid-vue>
           </div>
@@ -99,7 +100,7 @@ import SelectBox from "../common/SelectBox.vue";
 import FileUploadModal from "../common/FileUploadModal.vue";
 import commonFunctions from '../../common/commonFunctions.js';
 import DeleteButtonRenderer from "../../common/renderers/DeleteButtonRenderer.js";
-import CalendarRenderer from "../../common/renderers/CalendarRenderer.js";
+import CalendarEditor from "../../common/renderers/CalendarEditor.js";
 
 /* eslint-disable vue/no-unused-components */
 const stateMappings = {"1": "입고대기", "2": "입고완료"};
@@ -111,7 +112,7 @@ export default {
       SelectBox,
       FileUploadModal,
       DeleteButtonRenderer,
-      CalendarRenderer
+      CalendarEditor
     },
     data: function() {
         return {
@@ -169,7 +170,9 @@ export default {
             {
               headerName: '캘린더 테스트',
               field: 'DATE',
-              cellRenderer: CalendarRenderer,
+              editable: true,
+              cellEditor: CalendarEditor,
+              cellEditorPopup: true,
               width: 200
             }
           ],
@@ -194,7 +197,7 @@ export default {
         console.log(this.inpEmplName);
       },
       addRow: function() {
-        this.rowData.push({SEQ: this.rowData.length+1});
+        this.rowData.push({SEQ: this.rowData.length+1, DATE: "2022-11-30"});
         this.gridApi.setRowData(this.rowData);
         console.log(this.rowDataDeleted);
       },

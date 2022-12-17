@@ -1,4 +1,4 @@
-export default class CalendarRenderer {
+export default class CalendarEditor {
     // gets called once before the renderer is used
     init(params) {
       //console.log('[sayho]', params);
@@ -6,17 +6,17 @@ export default class CalendarRenderer {
       this.eGui = document.createElement('div');
       this.eGui.innerHTML = `
             <span class="align-middle">
-                <input class="form-control inp-calendar" type="date" value="${params.data.DATE}"/>
+                <input class="form-control inp-calendar" type="date" v-model="cellValue"/>
             </span>
          `;
   
       // get references to the elements we want
       //TODO: implement change value of calendar
       this.eCalendar = this.eGui.querySelector('.inp-calendar');
+
       this.eCalendar.onchange = (event) => {
-        console.log(event);
-        console.log(this.value);
-        console.log(params.data.DATE);
+        this.cellValue = event.target.value;
+        console.log(this.cellValue);
       };
   
       // set value into cell
@@ -25,6 +25,15 @@ export default class CalendarRenderer {
   
     getGui() {
       return this.eGui;
+    }
+    // focus and select can be done after the gui is attached
+    afterGuiAttached() {
+      this.eCalendar.focus();
+      this.eCalendar.select();
+    }
+
+    getValue() {
+      return this.cellValue;
     }
   
     // gets called whenever the cell refreshes
@@ -40,9 +49,9 @@ export default class CalendarRenderer {
     // gets called when the cell is removed from the grid
     destroy() {
       // do cleanup, remove event listener from button
-      if (this.eButton) {
+      if (this.eCalendar) {
         // check that the button element exists as destroy() can be called before getGui()
-        this.eButton.removeEventListener('click', this.eventListener);
+        this.eCalendar.removeEventListener('onchange', this.eventListener);
       }
     }
   
