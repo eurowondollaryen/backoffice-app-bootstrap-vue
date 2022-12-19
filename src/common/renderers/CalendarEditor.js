@@ -15,8 +15,7 @@ export default class CalendarEditor {
       this.eCalendar = this.eGui.querySelector('.inp-calendar');
 
       this.eCalendar.onchange = (event) => {
-        this.cellValue = event.target.value;
-        console.log(this.cellValue);
+        this.cellValue = event.target.value.replaceAll("-", "");
       };
   
       // set value into cell
