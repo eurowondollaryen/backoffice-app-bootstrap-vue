@@ -72,6 +72,7 @@
                     :context="context"
                     @cell-clicked="onCellClicked"
                     :stopEditingWhenCellsLoseFocus="true"
+                    :singleClickEdit="true"
                   >
             </ag-grid-vue>
           </div>
