@@ -9,7 +9,7 @@
               <!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">{{ rootName }}</a></li>
+                  <li class="breadcrumb-item"><a href="#">{{ menuPath }}</a></li>
                   <li class="breadcrumb-item active">{{ depthName1 }}</li>
                 </ol>
               </div>
@@ -24,16 +24,18 @@
 
 <script>
 export default {
+  props: {
+    menuName: String,
+    menuPath: String
+  },
   data: function() {
     return {
-      menuName: "Task Management",
-      rootName: "Home",
       depthName1: ""
     };
   },
   methods: {
     setValues: function(objValues) {
-      this.menuName = objValues.menuName;
+      //this.menuName = objValues.menuName;
       this.rootName = objValues.rootName;
       this.depthName1 = objValues.depthName1;
     }
