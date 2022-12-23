@@ -47,6 +47,14 @@
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>테마 선택</label>
+            <select-box :valueList="themeList" v-model="themeClass"></select-box>
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
       </div>
       <!-- /.row -->
       <div class="row">
@@ -63,7 +71,7 @@
           <div class="row">
             <ag-grid-vue
                     style="width: 100%; height: 200px"
-                    class="ag-theme-alpine"
+                    :class="themeClass"
                     :columnDefs="columnDefs"
                     @grid-ready="onGridReady"
                     :rowSelection="rowSelection"
@@ -127,8 +135,11 @@ export default {
           fileUploadModalTitle: "파일 업로드 테스트",
           fileUploadModalFileIdxx: "",
           fileUploadModalFileNumberLimit: 5,
+          /* 테마 텍스트 */
+          themeClass: "ag-theme-alpine",
           /* selectbox 선택값 */
           isWorkingList: [{value: "0", text: "전체"}, {value: "1", text: "재직"}, {value: "2", text: "퇴직"}],
+          themeList: [{value: "ag-theme-alpine", text: "alpine"}, {value: "ag-theme-alpine-dark", text: "alpine-dark"}],
           /* ag-grid-vue3 관련 변수들 */
           rowData: [],
           rowDataDeleted: [],
