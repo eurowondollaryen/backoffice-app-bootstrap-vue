@@ -55,6 +55,14 @@
           <!-- /.form-group -->
         </div>
         <!-- /.col -->
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>datetimepicker</label>
+            <input type="datetime-local" class="form-control" v-model="inpDateTime">
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
       </div>
       <!-- /.row -->
       <div class="row">
@@ -130,6 +138,7 @@ export default {
           inpDeptName: "",
           inpEmplName: "",
           inpIsWorking: "0",
+          inpDateTime: "",
           /* file upload modal 관련 변수 */
           fileUploadModalVislble: false,
           fileUploadModalTitle: "파일 업로드 테스트",
