@@ -58,7 +58,13 @@
               <li class="nav-item">
                 <a href="#" class="nav-link" v-on:click="executeMenu('ADMINA001')">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>사원찾기</p>
+                  <p>컴포넌트 샘플</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link" v-on:click="executeMenu('Calendar')">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>캘린더뷰</p>
                 </a>
               </li>
               <li class="nav-item">

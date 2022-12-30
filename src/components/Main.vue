@@ -27,6 +27,7 @@ import ControlSidebar from "./dashboard/ControlSidebar.vue";
 import ADMINMAIN from "./ADMIN/ADMINMAIN.vue";
 import ADMINA001 from "./ADMIN/ADMINA001.vue";
 import ADMINA002 from "./ADMIN/ADMINA002.vue";
+import Calendar from "./ADMIN/Calendar.vue";
 
 export default {
   name: "Main",
@@ -38,7 +39,8 @@ export default {
     ControlSidebar,
     ADMINMAIN,
     ADMINA001,
-    ADMINA002
+    ADMINA002,
+    Calendar
   },
   data: function() {
     return {
