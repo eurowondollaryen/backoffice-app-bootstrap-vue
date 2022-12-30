@@ -11,7 +11,7 @@ export default {
     },
     data: function() {
         return {
-          menuName: "캘린더뷰"
+          menuName: "캘린더 뷰"
         };
     },
     methods: {
