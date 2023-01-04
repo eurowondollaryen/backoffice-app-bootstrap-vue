@@ -70,6 +70,7 @@
         <button class="btn btn-info" @click="addRow()">그리드 행 추가</button>
         <button class="btn btn-danger" @click="deleteRow()">그리드 선택 행 삭제</button>
         <button class="btn btn-danger" @click="printCurrentRow()">현재 행 데이터 log</button>
+        <button class="btn btn-danger" @click="downloadCsv()">그리드 CSV 다운로드</button>
       </div>
       <!-- /.row -->
       <div class="row">
@@ -256,6 +257,11 @@ export default {
       },
       printCurrentRow: function() {
         console.log(this.currentRowData);
+      },
+      downloadCsv: function() {
+        this.gridApi.exportDataAsCsv({
+          fileName: "csv파일명_" + commonFunctions.getClientDate()
+        });
       }
     }
 };
