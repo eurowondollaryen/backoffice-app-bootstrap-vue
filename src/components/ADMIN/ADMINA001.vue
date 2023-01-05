@@ -196,6 +196,13 @@ export default {
               cellEditor: CalendarEditor,
               cellEditorPopup: true,
               width: 200
+            }, {
+              headerName: '',
+              field: 'CHECKBOX',
+              headerCheckboxSelection: true,
+              checkboxSelection: true,
+              showDisabledCheckboxes: true,
+              width: 80
             }
           ],
           gridApi: null,
