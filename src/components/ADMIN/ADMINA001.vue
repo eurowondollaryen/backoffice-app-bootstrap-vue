@@ -74,6 +74,9 @@
       </div>
       <!-- /.row -->
       <div class="row">
+        <p>체크박스 cell renderer가 아니라 row selection을 위한것입니다.</p>
+      </div>
+      <div class="row">
         <div class="col-md-12 card p-3">
           <h5><strong>조회 결과</strong></h5>
           <loading-circle v-if="isLoadingCircleVisible" :isLoading="isLoading"/>
@@ -119,6 +122,7 @@ import FileUploadModal from "../common/FileUploadModal.vue";
 import commonFunctions from '../../common/commonFunctions.js';
 import DeleteButtonRenderer from "../../common/renderers/DeleteButtonRenderer.js";
 import CalendarEditor from "../../common/renderers/CalendarEditor.js";
+import CheckboxEditor from "../../common/renderers/CheckboxEditor.js";
 
 /* eslint-disable vue/no-unused-components */
 const stateMappings = {"1": "입고대기", "2": "입고완료"};
@@ -130,7 +134,8 @@ export default {
       SelectBox,
       FileUploadModal,
       DeleteButtonRenderer,
-      CalendarEditor
+      CalendarEditor,
+      CheckboxEditor
     },
     data: function() {
         return {
@@ -196,14 +201,23 @@ export default {
               cellEditor: CalendarEditor,
               cellEditorPopup: true,
               width: 200
-            }, {
+            },
+            {
               headerName: '',
-              field: 'CHECKBOX',
+              field: 'SELECTED',
               headerCheckboxSelection: true,
               checkboxSelection: true,
               showDisabledCheckboxes: true,
               width: 80
-            }
+            },
+            {
+              headerName: '체크박스 테스트',
+              field: 'CHECKBOXVLAUE',
+              editable: true,
+              cellEditor: CheckboxEditor,
+              width: 200
+            },
+            
           ],
           gridApi: null,
           gridColumnApi: null,
