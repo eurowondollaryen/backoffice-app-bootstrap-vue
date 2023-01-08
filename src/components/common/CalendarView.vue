@@ -19,7 +19,12 @@
         </thead>
         <tbody>
           <tr v-for="week in weekList" v-bind:key="week.index">
-            <td v-for="day in week" v-bind:key="day.seq" :class="day.class">{{ day.text }}</td>
+            <td v-for="day in week" v-bind:key="day.seq" :class="day.class">
+              {{ day.text }}
+              <div v-if="scheduleList[day.date] != undefined">
+                {{ scheduleList[day.date].title }}
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -40,7 +45,7 @@ export default {
     data: function() {
         return {
           weekList: [],
-          scheduleList: [],
+          scheduleList: {"20230108": {title: "스케쥴"}},
           date: new Date(),
           headerTitle: "",
           todayYmd: ""
@@ -112,7 +117,8 @@ export default {
             ? currentDate.getMonth()+1 + "월 " + currentDate.getDate() + "일"
             : currentDate.getDate() + "일";
             let classText = this.getClassTextByDate(currentDate, today);
-            week.push({text: text, class: classText, seq: seq++});
+            console.log(this.getYmdFromDate(currentDate));
+            week.push({text: text, class: classText, seq: seq++, date: today});
             currentDate.setDate(currentDate.getDate() + 1);
           }
           this.weekList.push(week);
