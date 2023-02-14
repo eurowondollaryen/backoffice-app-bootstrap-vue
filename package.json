@@ -27,6 +27,7 @@
     "jquery": "^3.6.0",
     "vue": "^3.0.0",
     "vue-cookies": "^1.8.2",
+    "vue-google-charts": "^1.1.0",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
