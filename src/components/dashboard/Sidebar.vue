@@ -68,27 +68,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link" v-on:click="executeMenu('ADMINA002')">
+                <a href="#" class="nav-link" v-on:click="executeMenu('CallLog')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>전화로그</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-header">시스템</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-search"></i>
-              <p>
-                DB관리
-                <i class="fas fa-angle-right right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>테이블 명세서</p>
                 </a>
               </li>
             </ul>
