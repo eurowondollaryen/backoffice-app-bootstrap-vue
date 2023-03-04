@@ -66,15 +66,19 @@
       </div>
       <!-- /.row -->
       <div class="row">
-        <button class="btn btn-primary" @click="modalStateChange(true)">파일 업로드 모달 테스트</button>
-        <button class="btn btn-info" @click="addRow()">그리드 행 추가</button>
-        <button class="btn btn-danger" @click="deleteRow()">그리드 선택 행 삭제</button>
-        <button class="btn btn-danger" @click="printCurrentRow()">현재 행 데이터 log</button>
-        <button class="btn btn-danger" @click="downloadCsv()">그리드 CSV 다운로드</button>
+        <div class="col">
+          <button class="btn btn-primary" @click="modalStateChange(true)">파일 업로드 모달 테스트</button>
+          <button class="btn btn-info" @click="addRow()">그리드 행 추가</button>
+          <button class="btn btn-danger" @click="deleteRow()">그리드 선택 행 삭제</button>
+          <button class="btn btn-danger" @click="printCurrentRow()">현재 행 데이터 log</button>
+          <button class="btn btn-danger" @click="downloadCsv()">그리드 CSV 다운로드</button>
+        </div>
       </div>
       <!-- /.row -->
       <div class="row">
-        <p>체크박스 cell renderer가 아니라 row selection을 위한것입니다.</p>
+        <div class="col">
+          <p>* 체크박스 cell renderer가 아니라 row selection을 위한것입니다.</p>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-12 card p-3">
@@ -288,5 +292,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+button {
+  margin-left: 2px;
+}
 </style>
